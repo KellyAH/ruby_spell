@@ -4,15 +4,20 @@
 # monsters do not have health. defeat via doing specific win condition!
 class Game
   def show_monster(monster)
-    puts "a #{create_monster.class} monster called the #{create_monster} has appeared!"
+    puts "a #{monster.class} monster called the #{monster} has appeared!"
   end
 
   def show_monster_defeat_condition
     print "to defeat the monster you must..."
-    print "turn it into an ARRAY type monster"
+    print "make it smaller (lowercase)"
+    puts
+      #print "turn it into an ARRAY type monster"
   end
 
-  def execute_spell(spell)
+  def execute_spell(monster, spell)
+    puts "You cast the #{spell} spell:"
+    print "which turns the #{monster} into..."
+    print eval ("'#{monster}'.#{spell}")
   end
 
 end

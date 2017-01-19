@@ -3,7 +3,7 @@
 # Collaborators: game.rb
 class Monster
   def create_monster
-    return String.new("spookey_boogeyman")
+    return String.new("SPOOKY_BOOGEYMAN")
   end
 
 end
