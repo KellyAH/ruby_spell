@@ -1,5 +1,5 @@
 # Responsibility: manage player's spell level and available spells.
-# Collaborators: game.rb, spell_book.rb player.rb
+# Collaborators: game_logic.rb, spell_book.rb player.rb
 
 class WizardRank
 

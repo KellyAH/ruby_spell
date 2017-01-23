@@ -1,11 +1,12 @@
 # Responsibility: manage all spells in the game. Shown (earned), hidden (unlocked),
-# Collaborators: game.rb
+# Collaborators: game_logic.rb
 class SpellBook
   def set_spells
     spells = {}
-    spells[:a] = .split
-    spells[:b] = .size
-    spells[:c] = .cut
+    puts "#{spells.inspect}"
+      # spells[:a] = .split
+    # spells[:b] = .size
+    # spells[:c] = .cut
   end
 
   def display_spells

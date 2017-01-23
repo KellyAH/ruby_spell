@@ -1,5 +1,5 @@
 # Responsibility: manage player stats: health, etc.
-# Collaborators: game.rb, spell_book.rb
+# Collaborators: game_logic.rb, spell_book.rb
 
 class Player
 
@@ -13,8 +13,9 @@ class Player
 
   def show_stats
     puts "*" * 30
-    puts "Your Health: #{@health}"
+    puts "Your Health: #{display_health_as_hearts(@health)}"
     puts "Your Wizard Rank: 1"
+    puts "Available Spells: <SPELL ARRAY>"
     puts "*" * 30
   end
 
@@ -23,6 +24,10 @@ class Player
     puts "Player Health: #{@health}"
   end
 
+private
 
+  def display_health_as_hearts(number)
+    return " \u2764 " * (number)
+  end
 
 end

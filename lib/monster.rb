@@ -1,9 +1,9 @@
 # Responsibility: manage all monsters in the game and their stats (if any).
 # monsters do not have health. defeat via doing specific win condition!
-# Collaborators: game.rb
+# Collaborators: game_logic.rb
 class Monster
-  def create_monster
-    return String.new("SPOOKY_BOOGEYMAN")
+  def spawn_monster
+    return String.new("EVIL SNOWMAN: \u2603")
   end
 
 end
