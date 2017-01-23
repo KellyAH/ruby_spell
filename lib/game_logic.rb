@@ -3,7 +3,6 @@
 
 # monsters do not have health. defeat via doing specific win condition!
 class GameLogic
-
   # overall game program attributes
   def initialize
     require './lib/screens/title_screen'
@@ -13,7 +12,7 @@ class GameLogic
 
   # generate stage
   def create_stage
-    stage = Stage.new
+    Stage.new
   end
 
   # generate monster
@@ -21,8 +20,4 @@ class GameLogic
     m01 = SpawnMonster.new
     m01.show_monster
   end
-
-
-
-
 end

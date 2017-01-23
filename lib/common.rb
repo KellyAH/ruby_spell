@@ -1,6 +1,6 @@
+# commons methods used in multi classes for game
 module Common
-  def self.get_user_input
-    return gets.chomp
+  def self.user_input
+    gets.chomp
   end
-
 end
