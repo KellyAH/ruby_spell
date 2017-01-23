@@ -1,17 +1,17 @@
+# manage new game state, actions, data
 class NewGame
-
   def initialize
-    puts "starting new game..."
+    puts 'starting new game...'
   end
 
   # start a new game
   def start_new_game
 
-    # TODO increment stats
+    # TODO: increment stats
     # stats = GameStats.new
     # stats.game_number += 1
 
-    #print New game text
+    # print New game text
     new_game_banner = File.read('./lib/fancy_text/new_game.txt')
     puts new_game_banner
     intro = <<EOF
@@ -26,12 +26,13 @@ EOF
 
     puts intro
 
-    #print Player health & rank
+    # print Player health & rank
     p1 = Player.new
     p1.show_stats
 
-    #auto load stage 1
-    forest = Stage.new("1")
-
+    # auto load stage 1
+    Stage.new('1')
+    m1 = SpawnMonster.new
+    m1.spawn_monster
   end
 end

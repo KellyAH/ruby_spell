@@ -1,5 +1,5 @@
+# handle game statistics
 class GameStats
-
   #attr_accessor :game_number
 
   # def initialize
@@ -15,5 +15,4 @@ class GameStats
     puts "Array: <NUMBER>"
     puts "Hash: <NUMBER>"
   end
-
 end

@@ -36,7 +36,7 @@ class TitleScreen
 
     require "./lib/common"
 
-    user_selection = Common.get_user_input
+    user_selection = Common.user_input
     resolve_title_screen_selection(user_selection)
   end
 
@@ -59,7 +59,7 @@ class TitleScreen
       title_screen_options
 
       require "./lib/common"
-      get_user_input = Common.get_user_input
+      get_user_input = Common.user_input
 
       resolve_title_screen_selection(get_user_input)
     end
