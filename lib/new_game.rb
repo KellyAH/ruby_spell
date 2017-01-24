@@ -1,38 +1,45 @@
-# manage new game state, actions, data
+# Responsibility: manage new game state, actions, data
+# Collaborators:
 class NewGame
+
+  attr_accessor :player_one
+
   def initialize
-    puts 'starting new game...'
+    require './lib/player'
+    @player_one = Player.new
+
   end
 
-  # start a new game
+  # setup a new game
   def start_new_game
-
     # TODO: increment stats
     # stats = GameStats.new
     # stats.game_number += 1
 
+    # create new player
+
+
     # print New game text
     new_game_banner = File.read('./lib/fancy_text/new_game.txt')
     puts new_game_banner
-    intro = <<EOF
-      There was a magician named, <NAME>,
-      who skipped out on wizard school. 
-      Because it was boring. 
 
-      'I'm gonna learn by doing!' said the newbie spellcaster.
-      
-      This is what happened next.
-EOF
-
-    puts intro
-
-    # print Player health & rank
-    p1 = Player.new
-    p1.show_stats
+    # display into story
+    puts display_intro(@player_one.name)
 
     # auto load stage 1
-    Stage.new('1')
-    m1 = SpawnMonster.new
-    m1.spawn_monster
+    require './lib/stage'
+    Stage.new(1, 5, @player_one)
+  end
+
+  # display intro story
+  def display_intro(name)
+    <<EOF
+      There was a great magician named, #{name} the Wise.
+      #{name}'s spell books were stolen by an evil rival sorcerer and scattered across the land. 
+      #{name} sensed a magical tome was nearby, and set off to recover it. 
+      
+      This is #{name}'s story...
+
+EOF
   end
 end
