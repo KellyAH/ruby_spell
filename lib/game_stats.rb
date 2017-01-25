@@ -1,5 +1,5 @@
 # handle game statistics
-class GameStats
+class GameStats < Singleton
   #attr_accessor :game_number
 
   # def initialize

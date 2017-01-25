@@ -1,5 +1,5 @@
 # commons methods used in multi classes for game
-module Common
+module UserInput
   def self.user_input
     gets.chomp
   end

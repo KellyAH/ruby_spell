@@ -47,9 +47,9 @@ class TitleScreen
     puts '-' * 60
     print 'Choose one: '
 
-    require "./lib/common"
+    require "./lib/user_input"
 
-    user_selection = Common.user_input
+    user_selection = UserInput.user_input
     resolve_title_screen_selection(user_selection)
   end
 
@@ -71,8 +71,8 @@ class TitleScreen
       puts "GAME MAKER SAYS: 'Sorry. Only NEW GAME and STATS options are available right now.'"
       display_title_screen_options
 
-      require "./lib/common"
-      get_user_input = Common.user_input
+      require "./lib/user_input"
+      get_user_input = UserInput.user_input
 
       resolve_title_screen_selection(get_user_input)
     end

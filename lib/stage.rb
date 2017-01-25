@@ -1,4 +1,4 @@
-# manages all levels and the monsters in it, in the game.
+# R: manage display of stage info
 # Collaborators: game_logic.rb
 class Stage
 
@@ -28,7 +28,7 @@ class Stage
 
   private
 
-
+# TODO move this to battle logic
   def initiate_battles(monster_type, player, monster_counter, monster_limit)
     require './lib/battle_logic'
 
@@ -44,4 +44,11 @@ class Stage
     puts '*' * 30
   end
 
+  # check score board to see if player passes a stage
+  def completed?(stage_id, player)
+    scoreboard.display(player)
+    if [stage_id] == 10
+      puts "you passed stage #{stage_id}"
+    end
+  end
 end
