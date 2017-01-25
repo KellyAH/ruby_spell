@@ -27,6 +27,11 @@ class BattleLogic
     monster.downcase
   end
 
+  def successfully_defeated_monster
+    player.health += 1
+    scoreboard.update('player1', 1, +1)
+  end
+
   # resolve if spell defeated monster
   def check_defeat_result(result, expected_result)
     unless result == expected_result
@@ -71,3 +76,7 @@ class BattleLogic
   end
 end
 
+
+
+b = BattleLogic.new
+b.run(stage1, win_count)
