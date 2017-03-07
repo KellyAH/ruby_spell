@@ -1,54 +1,20 @@
-# R: manage display of stage info
+# Responsibility: manage stage data (name, #, monster type)
 # Collaborators: game_logic.rb
 class Stage
 
-  attr_accessor :monster_counter, :monster_limit, :player
+  attr_accessor :stage_name, :stage_number, :monster_type
 
-  # loads stage
-  def initialize(stage_number, spawn_limit, player)
-    @monster_counter = 0
-    @monster_limit = spawn_limit.to_i
-    load_stage(stage_number.to_s)
-    @player = player
+  # set stage data
+  def initialize(number, name, monster_type)
+    @stage_number = number
+    @stage_name = name
+    @monster_type = monster_type
   end
 
-  # load stage and it's monsters
-  def load_stage(number)
-    case number
-      when '1'
-        display_stage_banner(1, "SilverLeaf Forest", "This was once the home of Dire Unicorns. Perhaps you'll encounter one today.")
-        initiate_battles('string', @player, 0, 5)
-      when '2'
-        display_stage_banner(2, "Mirage Lagoon", "Legends say a great sea monster dwells here.")
-      else
-        # TODO: INSERT MORES STAGES
-    end
-
-  end
-
-  private
-
-# TODO move this to battle logic
-  def initiate_battles(monster_type, player, monster_counter, monster_limit)
-    require './lib/battle_logic'
-
-    battle = BattleLogic.new
-    battle.battle_flow(monster_type, player, monster_counter, monster_limit)
-  end
-
-  # display banner when entering stage
-  def display_stage_banner(number, name, description)
-    puts '*' * 30
-    puts "Entering STAGE #{number} - #{name}..."
-    puts description
-    puts '*' * 30
-  end
-
-  # check score board to see if player passes a stage
-  def completed?(stage_id, player)
-    scoreboard.display(player)
-    if [stage_id] == 10
-      puts "you passed stage #{stage_id}"
-    end
+  # display stage info
+  def display_stage_info
+    puts "WELCOME to Stage ##{@stage_number}."
+    puts "The #{@stage_name}."
+    puts "Here you'll find #{@monster_type} monsters!"
   end
 end
