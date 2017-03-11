@@ -22,6 +22,7 @@ class Spells
     @spells[:d] = array[3]
   end
 
+  # show spells on screen
   def display_spells
     puts "Your available spells:"
 
@@ -31,39 +32,26 @@ class Spells
   end
 
   #ask user for spell input
-  #TODO retry loop for failed input
   def self.query_spell
     puts "Input the letter for the spell you wish to cast:"
-    @input = gets.chomp
-    if @input.length != 1 || @input =~ /[a-dA-D]/
+    gets.chomp
+  end
+
+  #sanatize and check user's spell input
+  def self.clean_spell_input(user_input, spell_instance)
+    input = user_input.to_s
+    if !input.match(/^[a-dA-D]$/)
       puts "please enter a, b, c, or d. And press Enter key."
-      @input = gets.chomp
+      query_spell
+      clean_spell_input(user_input, spell_instance)
     else
-      puts "please enter a, b, c, or d. And press Enter key."
-      @input = gets.chomp
+      announce_executed_spell(input, spell_instance)
     end
   end
 
-  # capture spell executed
-  def self.execute_spell(key)
-
+  # announce that spell executed on screen
+  def self.announce_executed_spell(key, spell_instance)
+    puts "You successfully cast the spell: #{spell_instance.spells[key.to_sym]}."
   end
-  # # make spell available to player
-  # def unlock_spell(spell)
-  #   print "Congradulations! You have learned a new spell! #{spell}"
-  # end
 
-  # # show description for spell
-  # def display_spell_description
-  #   puts 'Spells X:'
-  #   puts 'does...'
-  # end
-
-
-  # def display_rank(number)
-  #   puts '*' * 30
-  #   puts "Your Wizard Rank: #{number}"
-  #   puts 'Available Spells: <SPELL ARRAY>'
-  #   puts '*' * 30
-  # end
 end
