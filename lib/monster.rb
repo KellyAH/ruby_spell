@@ -1,8 +1,15 @@
 # Responsibility: manage monster data
 # Collaborators: ?
 class Monster
-  # generate and announce a monster
-  def self.spawn_monster(type)
+  attr_accessor :type
+
+  # generate monster
+  def initialize(type)
+    @type = type
+  end
+
+  # show monster on screen
+  def spawn_monster(type)
     case type
       when 'string'
         String.new("LARGE SNOWMAN: \u2603")

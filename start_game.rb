@@ -13,7 +13,7 @@ require './lib/spells'
 # p1.display_player_name
 # p1.display_health
 
-# set stage
+# create stage
 stage_data = { :one => ['1', 'Yarn-Ball Forest', 'String'],
                :two => ['2', "Jeweler's Lagoon", 'Array'],
                :three => ['3', 'Algebra Mountains', 'FixNum'],
@@ -37,9 +37,17 @@ spells = %w[.downcase .upcase .capitalize .split]
 
 spell_list = Spells.new
 
+puts spell_list.spells
+
 spell_list.set_spells(spells)
 
 spell_list.display_spells
 
-Spells.query_spell
-#Spells.execute_spell(Spells.query_spell)
+spell_input = Spells.query_spell
+Spells.clean_spell_input(spell_input, spell_list)
+
+#resolve fight
+
+b = BattleLogic.new
+b.run(stage1, win_count)
+
