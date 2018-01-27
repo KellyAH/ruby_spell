@@ -1,17 +1,17 @@
-#require './lib/screens/title_screen'
+require './lib/screens/title_screen'
 require './lib/player'
 require './lib/stage'
 require './lib/monster'
 require './lib/spells'
 
-#TitleScreen.new
+TitleScreen.new
 
-# create player
-# p1 = Player.new
-#
-# p1.set_player_name
-# p1.display_player_name
-# p1.display_health
+create player
+p1 = Player.new
+
+p1.set_player_name
+p1.display_player_name
+p1.display_health
 
 # create stage
 stage_data = { :one => ['1', 'Yarn-Ball Forest', 'String'],
