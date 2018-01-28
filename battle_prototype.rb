@@ -1,5 +1,4 @@
-class Game
-
+# NOTES
 # player smiley faces: https://kawaiiface.net/
 # o(╥﹏╥)o
 # monster graphics: http://1lineart.kulaone.com/#/ and http://asciimoji.com/
@@ -8,6 +7,8 @@ class Game
 # snake ¸.·´¯`·.´¯`·.¸¸.·´¯`·.¸(((º>
 # bear  ʕっ•ᴥ•ʔっ
 # 'ᕙ༼ ԾܫԾ ༽ᕗ'
+
+class Game
 
   # def retry_game
   #   p 'Do you want to try again?'
@@ -79,11 +80,6 @@ class Enemy
     p "A #{enemy_data[:begin_state]} appears!"
     p "It is a #{enemy_data[:begin_state].class} monster type!"
     p "Defeat Condition: #{enemy_data[:defeat_condition]}."
-
-    # p "#{@enemy_data[:image]}"
-    # p "A #{@enemy_data[:begin_state]} appears!"
-    # p "It is a #{data[:begin_state].class} monster type!"
-    # p "Defeat Condition: #{data[:defeat_condition]}."
   end
 
 private
@@ -175,6 +171,8 @@ attr_reader :enemy_status
     while player.health > 0 && @enemy_status == 'alive'
       start_battle(player, enemy)  
     end
+
+    @spell_failed = false
   end
 
 private
@@ -182,6 +180,9 @@ private
   def start_battle(player, enemy)
     spell = Spell.query_for_spell
     resolve_spell(player, enemy, spell)
+    if @spell_failed == true
+      player.lose_health(player.health, 1)
+    end
   end
 
 
@@ -189,7 +190,7 @@ private
     enemy_begin_state = enemy.begin_state
     enemy_type = enemy.type
     enemy_defeat_state = enemy.defeat_state
-    
+
     display_spell_and_enemy(enemy_begin_state, spell)
     evaluate_spell_on_enemy(player, enemy_begin_state, enemy_type, spell)
 
@@ -199,43 +200,27 @@ private
       p 'YOU WON! Gain 1 gold coin ♨(⋆‿⋆)♨'
     else
       p "YOUR SPELL Failed to defeat the enemy. (◕︵◕)"
-      player.lose_health(player.health, 1)
+      @spell_failed = true
     end
   end
 
-  # def resolve_spell(enemy, spell, player)
-  #   enemy_begin_state = enemy.begin_state
-  #   enemy_type = enemy.type
-  #   enemy_defeat_state = enemy.defeat_state
-
+  # DO LATER?
   #   # check if method is available for object class
+  # WARNING: won't work for 'x << y, or x.prepend('string')'
   #   if enemy_begin_state.respond_to?(spell)
   #     display_spell_and_enemy(enemy_begin_state, spell)
   #     evaluate_spell_on_enemy(enemy_begin_state, spell)
 
-  #     # evaluate if spell defeats enemy or not
-  #     if @result == enemy_defeat_state
-  #       @enemy_status = 'dead'
-  #       p 'YOU WON! Gain 1 gold coin ♨(⋆‿⋆)♨'
-  #     else
-  #       p "YOUR SPELL Failed to defeat the enemy. (◕︵◕)"
-  #       player.lose_health(player.health, 1)
-  #     end
-
-  #   else
-  #     p "#{spell} is a spell that doesn't work on #{enemy_type} enemy. You cast #{spell} spell but nothing happens. o(╥﹏╥)o"
-  #     player.lose_health(player.health, 1)      
-  #   end
-  # end
 
       # TODO - only works for string obj. make work with hash and array
   def evaluate_spell_on_enemy(player, enemy_begin_state, enemy_type, spell)
+    # why did I use rescue? and not ...?
     begin
     @result = eval "'#{enemy_begin_state}'.#{spell}"
     p "enemy '#{enemy_begin_state}' turned into: '#{@result}'"
     rescue NoMethodError => e
       p "#{spell} is a spell that doesn't work on #{enemy_type} enemy. You cast #{spell} spell but nothing happens. o(╥﹏╥)o"
-      player.lose_health(player.health, 1)   
+      @spell_failed = true 
     end
   end
 
@@ -246,7 +231,5 @@ private
 end
 
 joe = Player.new
-# bot = Enemy.new('string_enemy')
-# p bot
 
 battle1 = BattleScreen.new(joe)
