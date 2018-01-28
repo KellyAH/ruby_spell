@@ -192,14 +192,14 @@ private
     enemy_defeat_state = enemy.defeat_state
 
     display_spell_and_enemy(enemy_begin_state, spell)
-    evaluate_spell_on_enemy(player, enemy_begin_state, enemy_type, spell)
+    evaluate_spell_on_enemy(player, enemy_begin_state, enemy_type, spell, enemy_defeat_state)
 
     # evaluate if spell defeats enemy or not
     if @result == enemy_defeat_state
       @enemy_status = 'dead'
       p 'YOU WON! Gain 1 gold coin ♨(⋆‿⋆)♨'
     else
-      p "YOUR SPELL Failed to defeat the enemy. (◕︵◕)"
+      p "The '#{spell}' Spell failed to defeat the enemy. (◕︵◕)"
       @spell_failed = true
     end
   end
@@ -213,11 +213,13 @@ private
 
 
       # TODO - only works for string obj. make work with hash and array
-  def evaluate_spell_on_enemy(player, enemy_begin_state, enemy_type, spell)
+  def evaluate_spell_on_enemy(player, enemy_begin_state, enemy_type, spell, enemy_defeat_state)
     # why did I use rescue? and not ...?
     begin
     @result = eval "'#{enemy_begin_state}'.#{spell}"
-    p "enemy '#{enemy_begin_state}' turned into: '#{@result}'"
+    p "'#{enemy_begin_state}' turned into: '#{@result}'"
+    p "To defeat '#{enemy_begin_state}', you must turn it into: '#{enemy_defeat_state}'."
+    # handle if inputted method is not a valid method for object
     rescue NoMethodError => e
       p "#{spell} is a spell that doesn't work on #{enemy_type} enemy. You cast #{spell} spell but nothing happens. o(╥﹏╥)o"
       @spell_failed = true 
