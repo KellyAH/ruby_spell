@@ -86,6 +86,7 @@ private
 
 def generate_monsters(enemy_type)
     # Decides which enemy is created
+  # to do store in yml file to keep DATA sepreate from CODE
     case enemy_type
       when 'string_enemy'
         @enemy_data = [{
@@ -216,7 +217,9 @@ private
   def evaluate_spell_on_enemy(player, enemy_begin_state, enemy_type, spell, enemy_defeat_state)
     # why did I use rescue? and not ...?
     begin
-    @result = eval "'#{enemy_begin_state}'.#{spell}"
+      @result = enemy_begin_state.send(spell)
+      p "SEND CODE HERE"
+      # @result = eval "'#{enemy_begin_state}'.#{spell}"
     p "'#{enemy_begin_state}' turned into: '#{@result}'"
     p "To defeat '#{enemy_begin_state}', you must turn it into: '#{enemy_defeat_state}'."
     # handle if inputted method is not a valid method for object
