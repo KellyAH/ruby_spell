@@ -100,33 +100,34 @@ def generate_monsters(enemy_type)
             :begin_state => 'bear',
             :defeat_state => 'BEAR',
             :defeat_condition => 'Make it bigger (all uppercase characters: upcase)'
+        },
+        {
+            :image => 'ʕっ*ᴥ*ʔっ',
+            :begin_state => 'Huge Angry Bear',
+            :defeat_state => "[\"Huge\", \"Angry\", \"Bear\"]",
+            :defeat_condition => 'Chop it up. (separate each word): split'
+        },
+        {
+            :image => String.new("\u2603"),
+            :begin_state => ' Snowman',
+            :defeat_state => 'Sleepy Snowman',
+            :defeat_condition => "Make it a Sleepy Snowman (prepend Sleepy to front of Snowman: prepend('Sleepy'))"
+        },
+        {
+            :image => 'ʕ oᴥoʔ',
+            :begin_state => 'Beary Sleepy',
+            :defeat_state => 'Beary Sleepy Bear',
+            :defeat_condition => 'Make it a Sleepy Bear (append Bear to end of Beary Sleepy: <<)'
         }
-        # {
-        #     :image => 'ʕっ*ᴥ*ʔっ',   
-        #     :begin_state => 'Huge Angry Bear',
-        #     :defeat_state => "'[\"Huge\", \"Angry\", \"Bear\"]'",
-        #     :defeat_condition => 'Chop it up. (separate each word): split'
-        # },
-        # {
-        #     :image => String.new("\u2603"),
-        #     :begin_state => ' Snowman',
-        #     :defeat_state => 'Sleepy Snowman',
-        #     :defeat_condition => "Make it a Sleepy Snowman (prepend Sleepy to front of Snowman: prepend('Sleepy'))"
-        # }
       ]
-        
+
         # METHODS TO ADD
-        # capitalize, swapcase, lstrip, rstrip, strip, chomp, chop, clear, reverse, delete, 
+        # capitalize, swapcase, lstrip, rstrip, strip, chomp, chop, clear, reverse, delete,
 
         # ADV METHODS TO ADD
         # each_line, gsub, slice, split, <<
 
-        #   {
-        #     :image => 'ʕ oᴥoʔ',
-        #     :begin_state => 'Beary Sleepy',
-        #     :defeat_state => 'Beary Sleepy Bear',
-        #     :defeat_condition => 'Make it a Sleepy Bear (append Bear to end of Beary Sleepy: <<)'
-        # }
+
 
         # ADV DETECTION METHODS TO ADD
         # empty?, end_with, each_line, include, length, start_with
@@ -167,10 +168,10 @@ attr_reader :enemy_status
   def initialize(player)
     # TODO ctrl how to make different enemy obj types
     enemy = Enemy.new('string_enemy')
-    @enemy_status = 'alive' 
-    
+    @enemy_status = 'alive'
+
     while player.health > 0 && @enemy_status == 'alive'
-      start_battle(player, enemy)  
+      start_battle(player, enemy)
     end
 
     @spell_failed = false
@@ -205,27 +206,17 @@ private
     end
   end
 
-  # DO LATER?
-  #   # check if method is available for object class
-  # WARNING: won't work for 'x << y, or x.prepend('string')'
-  #   if enemy_begin_state.respond_to?(spell)
-  #     display_spell_and_enemy(enemy_begin_state, spell)
-  #     evaluate_spell_on_enemy(enemy_begin_state, spell)
 
-
-      # TODO - only works for string obj. make work with hash and array
   def evaluate_spell_on_enemy(player, enemy_begin_state, enemy_type, spell, enemy_defeat_state)
-    # why did I use rescue? and not ...?
+
     begin
       @result = enemy_begin_state.send(spell)
-      p "SEND CODE HERE"
-      # @result = eval "'#{enemy_begin_state}'.#{spell}"
     p "'#{enemy_begin_state}' turned into: '#{@result}'"
     p "To defeat '#{enemy_begin_state}', you must turn it into: '#{enemy_defeat_state}'."
     # handle if inputted method is not a valid method for object
     rescue NoMethodError => e
       p "#{spell} is a spell that doesn't work on #{enemy_type} enemy. You cast #{spell} spell but nothing happens. o(╥﹏╥)o"
-      @spell_failed = true 
+      @spell_failed = true
     end
   end
 
