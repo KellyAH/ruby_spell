@@ -33,8 +33,8 @@ class Player
 
   def lose_health(health, value)
     @health = @health - value
-    p "You lose #{value} Health. ★~ (◠︿◕)"
-    p " Your Health is now: #{@health}."
+    p "HEALTH LOST: You lose #{value} Health. ★~ (◠︿◕)"
+    p "Your Health is now: #{@health}."
     check_health_level
   end
 
@@ -94,31 +94,31 @@ def generate_monsters(enemy_type)
             :begin_state => 'SLIME',
             :defeat_state => 'slime',
             :defeat_condition => 'Make it smaller (all lowercase characters: downcase)'
-        },
-        {
-            :image => 'ʕっ•ᴥ•ʔっ',
-            :begin_state => 'bear',
-            :defeat_state => 'BEAR',
-            :defeat_condition => 'Make it bigger (all uppercase characters: upcase)'
-        },
-        {
-            :image => 'ʕっ*ᴥ*ʔっ',
-            :begin_state => 'Huge Angry Bear',
-            :defeat_state => "[\"Huge\", \"Angry\", \"Bear\"]",
-            :defeat_condition => 'Chop it up. (separate each word): split'
-        },
-        {
-            :image => String.new("\u2603"),
-            :begin_state => ' Snowman',
-            :defeat_state => 'Sleepy Snowman',
-            :defeat_condition => "Make it a Sleepy Snowman (prepend Sleepy to front of Snowman: prepend('Sleepy'))"
-        },
-        {
-            :image => 'ʕ oᴥoʔ',
-            :begin_state => 'Beary Sleepy',
-            :defeat_state => 'Beary Sleepy Bear',
-            :defeat_condition => 'Make it a Sleepy Bear (append Bear to end of Beary Sleepy: <<)'
         }
+        # {
+        #     :image => 'ʕっ•ᴥ•ʔっ',
+        #     :begin_state => 'bear',
+        #     :defeat_state => 'BEAR',
+        #     :defeat_condition => 'Make it bigger (all uppercase characters: upcase)'
+        # }
+        # {
+        #     :image => 'ʕっ*ᴥ*ʔっ',
+        #     :begin_state => 'Huge Angry Bear',
+        #     :defeat_state => "[\"Huge\", \"Angry\", \"Bear\"]",
+        #     :defeat_condition => 'Chop it up. (separate each word): split'
+        # },
+        # {
+        #     :image => String.new("\u2603"),
+        #     :begin_state => ' Snowman',
+        #     :defeat_state => 'Sleepy Snowman',
+        #     :defeat_condition => "Make it a Sleepy Snowman (prepend Sleepy to front of Snowman: prepend('Sleepy'))"
+        # },
+        # {
+        #     :image => 'ʕ oᴥoʔ',
+        #     :begin_state => 'Beary Sleepy',
+        #     :defeat_state => 'Beary Sleepy Bear',
+        #     :defeat_condition => 'Make it a Sleepy Bear (append Bear to end of Beary Sleepy: <<)'
+        # }
       ]
 
         # METHODS TO ADD
@@ -151,8 +151,8 @@ end
 class Spell
 
   # get user spell input and sanitize it to use in eval method
-  def self.query_for_spell
-    p ("-" * 13) + "FIGHT!" + ("-" * 13)
+  def self.spell_user_inputted
+    # p ("-" * 13) + "FIGHT!" + ("-" * 13)
     p "Enter what spell (ruby method) you want to invoke on the enemy:"
     user_input = gets.chomp
     user_input.to_s
@@ -163,7 +163,6 @@ end
 class BattleScreen
 
 attr_reader :enemy_status
-
   # keep engaging battle until player health is gone or enemy defeated
   def initialize(player)
     # TODO ctrl how to make different enemy obj types
@@ -171,7 +170,7 @@ attr_reader :enemy_status
     @enemy_status = 'alive'
 
     while player.health > 0 && @enemy_status == 'alive'
-      start_battle(player, enemy)
+      start_fight(player, enemy)
     end
 
     @spell_failed = false
@@ -179,8 +178,8 @@ attr_reader :enemy_status
 
 private
 
-  def start_battle(player, enemy)
-    spell = Spell.query_for_spell
+  def start_fight(player, enemy)
+    spell = Spell.spell_user_inputted
     resolve_spell(player, enemy, spell)
     if @spell_failed == true
       player.lose_health(player.health, 1)
@@ -193,15 +192,17 @@ private
     enemy_type = enemy.type
     enemy_defeat_state = enemy.defeat_state
 
-    display_spell_and_enemy(enemy_begin_state, spell)
+    display_spell_cast_on_enemy(enemy_begin_state, spell)
     evaluate_spell_on_enemy(player, enemy_begin_state, enemy_type, spell, enemy_defeat_state)
 
     # evaluate if spell defeats enemy or not
     if @result == enemy_defeat_state
+      @spell_failed = false
       @enemy_status = 'dead'
-      p 'YOU WON! Gain 1 gold coin ♨(⋆‿⋆)♨'
+      p 'RESULT: YOU WON! ♨(⋆‿⋆)♨'
+      # TODO - add Gain 1 gold coin mechanic
     else
-      p "The '#{spell}' Spell failed to defeat the enemy. (◕︵◕)"
+      p "RESULT: The '#{spell}' Spell failed to defeat the enemy. (◕︵◕)"
       @spell_failed = true
     end
   end
@@ -211,16 +212,16 @@ private
 
     begin
       @result = enemy_begin_state.send(spell)
-    p "'#{enemy_begin_state}' turned into: '#{@result}'"
-    p "To defeat '#{enemy_begin_state}', you must turn it into: '#{enemy_defeat_state}'."
+    p "REMINDER: To defeat '#{enemy_begin_state}', you must turn it into: '#{enemy_defeat_state}'."
+    p "RESULT: '#{enemy_begin_state}' turned into: '#{@result}'"
     # handle if inputted method is not a valid method for object
     rescue NoMethodError => e
-      p "#{spell} is a spell that doesn't work on #{enemy_type} enemy. You cast #{spell} spell but nothing happens. o(╥﹏╥)o"
+      p "INVALID SPELL: #{spell} is a spell that doesn't work on #{enemy_type} enemy. You cast #{spell} spell but nothing happens. o(╥﹏╥)o"
       @spell_failed = true
     end
   end
 
-  def display_spell_and_enemy(enemy_begin_state, spell)
+  def display_spell_cast_on_enemy(enemy_begin_state, spell)
     p "You invoked #{spell} Spell on #{enemy_begin_state}. In Ruby code it looks like this: '#{enemy_begin_state}'.#{spell}"
   end
 
