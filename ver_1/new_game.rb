@@ -20,7 +20,7 @@ class NewGame
 
 
     # print New game text
-    new_game_banner = File.read('./lib/fancy_text/new_game.txt')
+    new_game_banner = File.read('./ver_1/fancy_text/new_game.txt')
     puts new_game_banner
 
     # display into story

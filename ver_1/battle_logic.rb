@@ -1,5 +1,5 @@
 # Responsibility:: manage resolving spell execution & monster defeats check
-# Collaborators: monster.rb, defeat_condition.rb
+# Collaborators: prototype01.rb, defeat_condition.rb
 require './lib/defeat_conditions'
 
 class BattleLogic
@@ -27,9 +27,9 @@ class BattleLogic
   # # control how battles are fought
   # def battle_flow(monster_type, player, monster_counter, monster_limit)
   #   while monster_counter <= monster_limit
-  #     require './lib/monster'
+  #     require './ver_1/monster'
   #
-  #     monster = Monster.new
+  #     monster = Prototype01.new
   #     enemy = monster.spawn_monster(monster_type)
   #     monster.announce_monster(enemy)
   #

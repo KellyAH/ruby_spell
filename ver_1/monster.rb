@@ -1,6 +1,6 @@
 # Responsibility: manage monster data
 # Collaborators: ?
-class Monster
+class Prototype01
   attr_accessor :type
 
   # generate monster

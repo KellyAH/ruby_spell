@@ -24,13 +24,13 @@ s1 =  Stage.new(stage_data[:one][0],stage_data[:one][1],stage_data[:one][2])
 s1.display_stage_info
 
 # generate monster
-Monster.announce_monster(Monster.spawn_monster('string'))
+Prototype01.announce_monster(Prototype01.spawn_monster('string'))
 
-Monster.announce_monster(Monster.spawn_monster('array'))
+Prototype01.announce_monster(Prototype01.spawn_monster('array'))
 
-Monster.announce_monster(Monster.spawn_monster('fixnum'))
+Prototype01.announce_monster(Prototype01.spawn_monster('fixnum'))
 
-Monster.announce_monster(Monster.spawn_monster('hash'))
+Prototype01.announce_monster(Prototype01.spawn_monster('hash'))
 
 # show spells
 spells = %w[.downcase .upcase .capitalize .split]

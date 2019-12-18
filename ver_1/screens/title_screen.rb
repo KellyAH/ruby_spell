@@ -14,10 +14,10 @@ class TitleScreen
   def display_title
     puts '-' * 120
     # created with http://patorjk.com/software/taag/#p=display&f=Twiggy&t=Ruby%20Spell
-    title_banner = File.read('./lib/fancy_text/title01.txt')
+    title_banner = File.read('./ver_1/fancy_text/title01.txt')
     ## ALTERNATE TITLE FONTS ##
-    #title_banner = File.read('./lib/fancy_text/title02.txt')
-    #title_banner = File.read('./lib/fancy_text/title03.txt')
+    #title_banner = File.read('./ver_1/fancy_text/title02.txt')
+    #title_banner = File.read('./ver_1/fancy_text/title03.txt')
 
     puts title_banner
   end
@@ -47,7 +47,7 @@ class TitleScreen
     puts '-' * 60
     print 'Choose one: '
 
-    require "./lib/user_input"
+    require "./ver_1/user_input"
 
     user_selection = UserInput.user_input
     resolve_title_screen_selection(user_selection)
@@ -71,7 +71,7 @@ class TitleScreen
       puts "GAME MAKER SAYS: 'Sorry. Only NEW GAME and STATS options are available right now.'"
       display_title_screen_options
 
-      require "./lib/user_input"
+      require "./ver_1/user_input"
       get_user_input = UserInput.user_input
 
       resolve_title_screen_selection(get_user_input)

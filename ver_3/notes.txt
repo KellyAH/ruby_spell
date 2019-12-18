@@ -1,0 +1,17 @@
+Class name:
+Responsibility:
+Collaborators:
+
+
+Acceptance Criteria:
+When a fight starts, a single monster appears.
+create and display data object: string, array, hash
+DONE
+
+User can input one spell they want to cast on the monster.
+capture user string input, validate it's a valid method for that data object, if not output message
+
+spells cast on monster either work or they don't
+execute user inputted validated method on object, evalute if result matches expected result
+
+
