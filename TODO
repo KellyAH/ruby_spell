@@ -1,0 +1,11 @@
+set up a rake task to run all your tests by adding this to your Rakefile:
+http://docs.seattlerb.org/minitest/
+
+
+
+properly comment classes
+Class name:
+Responsibility:
+Collaborators:
+
+
