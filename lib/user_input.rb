@@ -27,12 +27,7 @@ class UserInput
   end
 
   def validate_input_on_hash(monster_object)
-    # check if user's input is a valid method for the object
-    p "QQQQ - : name is: #{monster_object.name}"
-    monster_object_type = monster_object.monster.class
-    p "QQQQ - : object type is: #{monster_object_type}"
-
-    if monster_object.respond_to? input.to_sym
+    if monster_object.monster.respond_to? input.to_sym
       p spell_cast_success_message(monster_object)
     else
       p spell_cast_failed_message(monster_object)

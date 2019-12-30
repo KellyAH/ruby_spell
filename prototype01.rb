@@ -15,6 +15,6 @@ h_monster = HashMonster.new
 # p h_monster.reveal_object_message
 
 user_input = UserInput.new
-user_input.validate_input_on_string_or_array_monster(s_monster)
-user_input.validate_input_on_string_or_array_monster(a_monster)
-# user_input.validate_input_on_hash(h_monster)
+# user_input.validate_input_on_string_or_array_monster(s_monster)
+# user_input.validate_input_on_string_or_array_monster(a_monster)
+user_input.validate_input_on_hash(h_monster)
