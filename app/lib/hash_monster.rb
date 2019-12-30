@@ -15,11 +15,11 @@ class HashMonster
     @monster = base
   end
 
-  def announce
-    p "A #{@monster[:name]} with #{@monster[:number_of_eyes]} eyes and #{@monster[:number_of_arms]} arms appears."
+  def arrival_message
+    "A #{@monster[:name]} with #{@monster[:number_of_eyes]} eyes and #{@monster[:number_of_arms]} arms appears."
   end
 
   def reveal
-    p "Examining it closely, you see the monster's individual pieces as: #{@monster}."
+    "Examining it closely, you see the monster's individual pieces as: #{@monster}."
   end
 end
