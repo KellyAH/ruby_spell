@@ -15,6 +15,8 @@ describe UserInput do
 
         # TODO: stub gets and chomp calls to simulate user's input
         # https://stackoverflow.com/questions/29323771/rspec-test-for-a-method-that-contains-gets-chomp
+        # https://gist.github.com/Kotauror/6993000de0c53206a96879515438950d
+        # https://stackoverflow.com/questions/37329190/using-rspec-to-test-user-input-with-gets
 
         expect(user_input.valid_spell?(s_monster)).to eq(true)
         expect(user_input.valid_spell?(a_monster)).to eq(false)
