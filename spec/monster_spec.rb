@@ -17,7 +17,7 @@ end
 
 describe ArrayMonster do
   it "creates a monster name" do
-    expect(ArrayMonster.new.name_array).to be_a_kind_of(Array)
+    expect(ArrayMonster.new.name).to be_a_kind_of(Array)
   end
 
   describe '#arrival_message' do
@@ -30,7 +30,7 @@ describe ArrayMonster do
   describe '#reveal_object_message' do
     it 'creates object display message' do
       monster = ArrayMonster.new
-      expect(monster.reveal_object_message).to eq("Using arcane sight, you see the monster's true form is: #{monster.name_array}.")
+      expect(monster.reveal_object_message).to eq("Using arcane sight, you see the monster's true form is: #{monster.name}.")
     end
   end
 end

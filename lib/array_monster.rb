@@ -5,19 +5,19 @@ require 'faker'
 require 'spicy-proton'
 
 class ArrayMonster
-  attr_reader :name_array, :name_string
+  attr_reader :name, :name_string
 
   def initialize
-    @name_array = create_monster_name
-    @name_string = @name_array.join(' ')
+    @name = create_monster_name
+    @name_string = name.join(' ')
   end
 
   def arrival_message
-    "A #{@name_string} appears."
+    "A #{name_string} appears."
   end
 
   def reveal_object_message
-    "Using arcane sight, you see the monster's true form is: #{@name_array}."
+    "Using arcane sight, you see the monster's true form is: #{name}."
   end
 
   private

@@ -11,6 +11,6 @@ class StringMonster
   end
 
   def arrival_message
-    "A #{@name} appears."
+    "A #{name} appears."
   end
 end
