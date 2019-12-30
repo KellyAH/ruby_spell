@@ -19,7 +19,7 @@ class HashMonster
     "A #{@monster[:name]} with #{@monster[:number_of_eyes]} eyes and #{@monster[:number_of_arms]} arms appears."
   end
 
-  def reveal
-    "Examining it closely, you see the monster's individual pieces as: #{@monster}."
+  def reveal_object_message
+    "Using arcane sight, you see the monster's true form is: #{@monster}."
   end
 end

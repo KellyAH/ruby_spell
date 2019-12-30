@@ -13,8 +13,8 @@ class UserInput
     p "You cast #{@input} spell."
   end
 
-  def validate_input
-    # check if it is a valid method for the object
+  def validate_input(monster_object)
+    # check if user's input is a valid method for the object
     #
   end
 end

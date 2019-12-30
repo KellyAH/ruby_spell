@@ -26,6 +26,13 @@ describe ArrayMonster do
       expect(monster.arrival_message).to eq("A #{monster.name_string} appears.")
     end
   end
+
+  describe '#reveal_object_message' do
+    it 'creates object display message' do
+      monster = ArrayMonster.new
+      expect(monster.reveal_object_message).to eq("Using arcane sight, you see the monster's true form is: #{monster.name_array}.")
+    end
+  end
 end
 
 describe HashMonster do
@@ -39,6 +46,13 @@ describe HashMonster do
       expect(hash_monster.arrival_message).to eq(
         "A #{hash_monster.monster[:name]} with #{hash_monster.monster[:number_of_eyes]} eyes and #{hash_monster.monster[:number_of_arms]} arms appears."
                                            )
+    end
+  end
+
+  describe '#reveal_object_message' do
+    it 'creates object display message' do
+      hash_monster = HashMonster.new
+      expect(hash_monster.reveal_object_message).to eq("Using arcane sight, you see the monster's true form is: #{hash_monster.monster}.")
     end
   end
 end

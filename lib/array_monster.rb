@@ -16,6 +16,10 @@ class ArrayMonster
     "A #{@name_string} appears."
   end
 
+  def reveal_object_message
+    "Using arcane sight, you see the monster's true form is: #{@name_array}."
+  end
+
   private
 
   # create descriptive monster name full of adjectives
