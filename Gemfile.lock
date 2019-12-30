@@ -9,19 +9,24 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    ansi (1.5.0)
     bindata (2.4.4)
-    builder (3.2.4)
     concurrent-ruby (1.1.5)
+    diff-lcs (1.3)
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
-    minitest (5.8.3)
-    minitest-reporters (1.4.2)
-      ansi
-      builder
-      minitest (>= 5.0)
-      ruby-progressbar
-    ruby-progressbar (1.10.1)
+    rspec (3.9.0)
+      rspec-core (~> 3.9.0)
+      rspec-expectations (~> 3.9.0)
+      rspec-mocks (~> 3.9.0)
+    rspec-core (3.9.1)
+      rspec-support (~> 3.9.1)
+    rspec-expectations (3.9.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.9.0)
+    rspec-mocks (3.9.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.9.0)
+    rspec-support (3.9.1)
     spicy-proton (2.1.4)
       bindata (~> 2.3)
 
@@ -30,8 +35,7 @@ PLATFORMS
 
 DEPENDENCIES
   faker!
-  minitest
-  minitest-reporters
+  rspec
   spicy-proton
 
 BUNDLED WITH

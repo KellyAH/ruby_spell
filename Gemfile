@@ -10,5 +10,4 @@ source 'https://rubygems.org'
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'spicy-proton'
-gem 'minitest'
-gem 'minitest-reporters'
+gem "rspec"
