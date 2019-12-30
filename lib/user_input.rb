@@ -1,5 +1,5 @@
 # Responsibility: capture and validate user input
-# Collaborators:
+# Collaborators: monster classes
 class UserInput
 
   attr_reader :input
@@ -9,6 +9,7 @@ class UserInput
     @input = gets.chomp.downcase
   end
 
+  #TODO refactor monster classes to you don't need to handle hash monster differently
   # checks if user's input is a valid method for the object
   def valid_spell?(monster_object)
     if monster_object.class == HashMonster
@@ -28,6 +29,7 @@ class UserInput
 
   private
 
+  #TODO: fix array obj outputting as object array and not pretty string?
   def spell_cast_success_message(monster_object)
     "You cast the #{input} spell on #{monster_object.name}."
   end
