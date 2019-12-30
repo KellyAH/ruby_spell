@@ -16,10 +16,6 @@ class ArrayMonster
     "A #{@name_string} appears."
   end
 
-  def reveal_obj_details_message
-    "Examining it closely, you see the monster's individual pieces as: #{@name_array}."
-  end
-
   private
 
   # create descriptive monster name full of adjectives
