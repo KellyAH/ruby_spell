@@ -7,8 +7,8 @@ require 'spicy-proton'
 class StringMonster
   attr_reader :name
 
-  def initialize
-    # @name = create_name
+  def initialize(type)
+    @name = create_name(type)
   end
 
   def arrival_message

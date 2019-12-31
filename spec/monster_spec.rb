@@ -3,13 +3,25 @@ require_relative '../lib/array_monster'
 require_relative '../lib/hash_monster'
 
 describe StringMonster do
-  it "creates a monster name" do
-    expect(StringMonster.new.name).to be_a_kind_of(String)
+  it "creates a single word monster name" do
+    name = StringMonster.new(:single).name
+    expect(name).to be_a_kind_of(String)
+    expect(name.split.size).to be(1)
+  end
+
+  it "creates a multi word monster name" do
+    name = StringMonster.new(:multi).name
+    expect(name).to be_a_kind_of(String)
+    expect(name.split.size).to be > 1
+  end
+
+  it "raises an error when invalid type param is passed" do
+    expect {StringMonster.new(:invalid)}.to raise_error(StandardError)
   end
 
   describe '#arrival_message' do
-    it 'creates display message for a monster' do
-      monster = StringMonster.new
+    it 'creates a display message' do
+      monster = StringMonster.new(:single)
       expect(monster.arrival_message).to eq("A #{monster.name} appears.")
     end
   end
@@ -21,14 +33,14 @@ describe ArrayMonster do
   end
 
   describe '#arrival_message' do
-    it 'creates display message for a monster' do
+    it 'creates a display message' do
       monster = ArrayMonster.new
       expect(monster.arrival_message).to eq("A #{monster.name} appears.")
     end
   end
 
   describe '#reveal_object_message' do
-    it 'creates object display message' do
+    it 'creates a object display message' do
       monster = ArrayMonster.new
       expect(monster.reveal_object_message).to eq("Using arcane sight, you see the monster's true form is: #{monster.name_array}.")
     end
@@ -41,7 +53,7 @@ describe HashMonster do
   end
 
   describe '#arrival_message' do
-    it 'creates display message for a monster' do
+    it 'creates a display message' do
       hash_monster = HashMonster.new
       expect(hash_monster.arrival_message).to eq(
         "A #{hash_monster.monster[:name]} with #{hash_monster.monster[:number_of_eyes]} eyes and #{hash_monster.monster[:number_of_arms]} arms appears."
@@ -50,7 +62,7 @@ describe HashMonster do
   end
 
   describe '#reveal_object_message' do
-    it 'creates object display message' do
+    it 'creates a object display message' do
       hash_monster = HashMonster.new
       expect(hash_monster.reveal_object_message).to eq("Using arcane sight, you see the monster's true form is: #{hash_monster.monster}.")
     end
