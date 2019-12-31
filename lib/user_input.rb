@@ -5,8 +5,12 @@ class UserInput
   attr_reader :input
 
   def initialize
+    @input = prompt_user_for_input
+  end
+
+  def prompt_user_for_input
     print "Type out the name of the spell you wish to cast and press ENTER key: "
-    @input = gets.chomp.downcase
+    gets.chomp.downcase
   end
 
   #TODO refactor monster classes to you don't need to handle hash monster differently
@@ -19,19 +23,9 @@ class UserInput
     end
   end
 
-  def display_spell_casting_message(monster_object)
-    if valid_spell?(monster_object)
-      p spell_cast_success_message(monster_object)
-    else
-      p spell_cast_failed_message(monster_object)
-    end
-  end
-
-  private
-
   #TODO: fix array obj outputting as object array and not pretty string?
   def spell_cast_success_message(monster_object)
-    "You cast the #{input} spell on #{monster_object.name}."
+    "You cast the [#{input}] spell on #{monster_object.name}."
   end
 
   def spell_cast_failed_message(monster_object)

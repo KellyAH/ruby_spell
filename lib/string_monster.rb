@@ -42,6 +42,7 @@ class StringMonster
              raise StandardError, "Invalid paramater [type], Expected :single or :multi or :random."
            end
 
+    # TODO: pull this out into seperate method
     if format != nil
       case format
       when :all_uppercase
