@@ -7,8 +7,8 @@ require 'spicy-proton'
 class StringMonster
   attr_reader :name
 
-  def initialize(type)
-    @name = create_name(type)
+  def initialize(type, format=nil)
+    @name = create_name(type, format)
   end
 
   def arrival_message
@@ -30,17 +30,30 @@ class StringMonster
   # @example
   #   create_name(:single) #=> "Argonian"
   #   create_name(:multi) #=> "Shy Argonian"
-  def create_name(type)
-    case type
-    when :single
-      create_single_name
-    when :multi
-      create_multi_name
-    when :random
-      create_random_name
-    else
-      raise StandardError, "Invalid paramater [type], Expected :single or :multi or :random."
+  def create_name(type, format=nil)
+    created_name = case type
+           when :single
+             create_single_name
+           when :multi
+             create_multi_name
+           when :random
+             create_random_name
+           else
+             raise StandardError, "Invalid paramater [type], Expected :single or :multi or :random."
+           end
+
+    if format != nil
+      case format
+      when :all_uppercase
+        created_name.upcase!
+      when :all_lowercase
+        created_name.downcase!
+      else
+        raise StandardError, "Invalid paramater [format], Expected :all_uppercase or :all_lowercase."
+      end
     end
+
+    created_name
   end
 
   private

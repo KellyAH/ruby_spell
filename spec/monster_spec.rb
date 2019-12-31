@@ -24,6 +24,22 @@ describe StringMonster do
     expect {StringMonster.new(:invalid)}.to raise_error(StandardError)
   end
 
+  it "creates an all uppercase single word monster name" do
+    name = StringMonster.new(:single, :all_uppercase).name
+    expect(name).to be_a_kind_of(String)
+    expect(name).to eq(name.upcase)
+  end
+
+  it "creates an all lowercase multi word monster name" do
+    name = StringMonster.new(:multi, :all_lowercase).name
+    expect(name).to be_a_kind_of(String)
+    expect(name).to eq(name.downcase)
+  end
+
+  it "raises an error when invalid format param is passed" do
+    expect {StringMonster.new(:random, :invalid)}.to raise_error(StandardError)
+  end
+
   describe '#arrival_message' do
     it 'creates a display message' do
       monster = StringMonster.new(:single)
