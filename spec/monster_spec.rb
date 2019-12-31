@@ -15,6 +15,11 @@ describe StringMonster do
     expect(name.split.size).to be > 1
   end
 
+  it "creates a random single or multi word monster name" do
+    name = StringMonster.new(:random).name
+    expect(name).to be_a_kind_of(String)
+  end
+
   it "raises an error when invalid type param is passed" do
     expect {StringMonster.new(:invalid)}.to raise_error(StandardError)
   end

@@ -23,7 +23,7 @@ class StringMonster
 
   ##
   # Produces a monster name containing one or many words
-  # @params [type] can be 'single' or 'many'
+  # @params [type] can be :single or :many or :random
   #
   # @return [String]
   #
@@ -36,8 +36,10 @@ class StringMonster
       create_single_name
     when :multi
       create_multi_name
+    when :random
+      create_random_name
     else
-      raise StandardError, "Invalid paramater [type], Expected :single or :multi."
+      raise StandardError, "Invalid paramater [type], Expected :single or :multi or :random."
     end
   end
 
@@ -79,5 +81,20 @@ class StringMonster
     else
       return base_name
     end
+  end
+
+  ##
+  # Produces a monster name containing one or many words
+  #
+  # @return [String]
+  #
+  # @example
+  #   create_random_name #=> "Ghost"
+  #   create_random_name #=> "Dire Wolf"
+  #   create_random_name #=> "Greater Dire Wraith"
+  #
+  # if auto generated base name contains more than 1 word, the last word is returned
+  def create_random_name
+    String.new(Faker::Games::ElderScrolls.creature)
   end
 end
