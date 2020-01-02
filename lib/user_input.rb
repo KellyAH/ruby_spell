@@ -1,7 +1,6 @@
 # Responsibility: capture and validate user input
 # Collaborators: monster classes
 class UserInput
-
   attr_reader :input
 
   def initialize
@@ -9,7 +8,7 @@ class UserInput
   end
 
   def prompt_user_for_input
-    print "Type out the name of the spell you wish to cast and press ENTER key: "
+    print "Type out the name of the spell you wish to cast and press the ENTER key: "
     gets.chomp.downcase
   end
 
@@ -29,7 +28,6 @@ class UserInput
   end
 
   def spell_cast_failed_message(monster_object)
-    "Your #{input} spell won't work on #{monster_object.name} because it's a #{monster_object.class}."
+    "#{input} spell doesn't work on #{monster_object.name} because it's a #{monster_object.class}. Please try again."
   end
-
 end

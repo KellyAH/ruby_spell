@@ -27,7 +27,7 @@ class BattleLogic
   # # control how battles are fought
   # def battle_flow(monster_type, player, monster_counter, monster_limit)
   #   while monster_counter <= monster_limit
-  #     require './ver_1/monster'
+  #     require './old_code/monster'
   #
   #     monster = Prototype01.new
   #     enemy = monster.spawn_monster(monster_type)

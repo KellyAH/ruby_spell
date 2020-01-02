@@ -10,11 +10,17 @@ tests - DONE
 User can input one spell they want to cast on the monster.
 capture user string input, validate it's a valid method for that data object, if not output a message
 DONE
-tests w/ stubbing for gets.chomp - In progress
+tests w/ stubbing for gets.chomp <- TODO
 
 spells cast on monster either work or they don't
 execute user inputted validated method on object, evalute if result matches expected result
+DONE
+tests w/ stubbing for gets.chomp <- TODO
 
+if spells cast on monster don't work, user is asked to input a spell again
+loop asking for input until a flag determines user has won the fight
+DONE
+tests w/ stubbing for gets.chomp <- TODO
 
 
 
