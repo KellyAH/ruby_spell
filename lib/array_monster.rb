@@ -6,10 +6,12 @@ require 'spicy-proton'
 
 class ArrayMonster
   attr_reader :name, :name, :name_array
+  attr_accessor :monster
 
   def initialize
-    @name_array = create_monster_name_array
-    @name = name_array.join(' ')
+    @monster = create_monster
+    @name_array = monster
+    @name = monster.join(' ')
   end
 
   def arrival_message
@@ -24,7 +26,7 @@ class ArrayMonster
 
   # create descriptive monster name full of adjectives
   # returns an array of strings E.g. ["sodden", "abusive", "Ghost"]
-  def create_monster_name_array
+  def create_monster
     name = Faker::Games::ElderScrolls.creature
 
     if name.include?(' ')

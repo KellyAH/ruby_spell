@@ -6,9 +6,11 @@ require 'spicy-proton'
 
 class StringMonster
   attr_reader :name
+  attr_accessor :monster
 
   def initialize(type, format=nil)
-    @name = create_name(type, format)
+    @monster = create_monster(type, format)
+    @name = monster
   end
 
   def arrival_message
@@ -17,7 +19,7 @@ class StringMonster
 
   ##
   # NOTE:
-  # Faker's generated monster name is random.
+  # Faker's generates a random monster name (which is also the monster itself).
   # it could be 1 word "dog", or multiple words "Falmer Nightprowler", "Dire Falmer Nightprowler""
   # some spell methods (E.g. split) only look good on strings containing multiple words
 
@@ -30,7 +32,7 @@ class StringMonster
   # @example
   #   create_name(:single) #=> "Argonian"
   #   create_name(:multi) #=> "Shy Argonian"
-  def create_name(type, format=nil)
+  def create_monster(type, format=nil)
     created_name = case type
            when :single
              create_single_name

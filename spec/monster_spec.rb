@@ -2,6 +2,7 @@ require_relative '../lib/string_monster'
 require_relative '../lib/array_monster'
 require_relative '../lib/hash_monster'
 
+#TODO: add nagative path tests?
 describe StringMonster do
   it "creates a single word monster name" do
     name = StringMonster.new(:single).name
