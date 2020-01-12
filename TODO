@@ -22,10 +22,14 @@ loop asking for input until a flag determines user has won the fight
 DONE
 tests w/ stubbing for gets.chomp <- TODO
 
-
+Add readme with install instructions and how to play GAME, etc.
 
 
 LOW
+handle ben's scenario where user inputs a method that deletes or mutates the monster object. like clear or method!.
+
+make success and fail messages an array of colorful message versions that are randomly selected array.sample
+
 add YARD documentation and comments
 ##
 # Produces the name of a race from the Elder Scrolls universe.

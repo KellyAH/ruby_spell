@@ -13,7 +13,7 @@ describe UserInput do
         user_input = UserInput.new
         user_input
 
-        # TODO: stub gets and chomp calls to simulate user's input
+        # TODO: stub / mock ? gets and chomp calls to simulate user's input
         # https://stackoverflow.com/questions/29323771/rspec-test-for-a-method-that-contains-gets-chomp
         # https://gist.github.com/Kotauror/6993000de0c53206a96879515438950d
         # https://stackoverflow.com/questions/37329190/using-rspec-to-test-user-input-with-gets

@@ -30,3 +30,16 @@ class FightScenarios
   end
 
 end
+
+
+# NOTE other 1 step win scenarios to consider
+# prepend "dead" to monster name to make "slime" -> "dead slime"
+# delete / clear it
+# run thru pages in the ruy way book
+# cut off "tail" of monster -> "big monster with long tail" -> big monster
+# mutate a monster by increasing its arms and eyes to too many -> just change hash value
+# disable via reduce arms and eyes to 0?
+#
+#
+# new feature: 2 step win conditions?
+#
