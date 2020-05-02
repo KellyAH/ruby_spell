@@ -1,5 +1,10 @@
 # RubySpell
-Ruby game to help ruby students recognize object types and memorize common methods
+A text adventure game in your Terminal. It was created to help people new to the Ruby programming language how to identify different data types and common methods used to parse. So players can have a fun game that helps them remember which ruby methods work best for manipulating data.
 
-I'm not satisfied with the way I architected this. 
-TODO Refactor everything until it's cleaner and easier to read/debug code! more modular! more simple classes!
+Version 0.3
+
+## Current Status
+Project is on hold so I can focus on LaunchSchool.
+
+## ToDo
+See [TODO file](TODO)
